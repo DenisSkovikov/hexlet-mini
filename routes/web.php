@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/*
 Route::get('about', function () {
-    return view('about');
+    $team = [
+        ['name' => 'иванов', 'post' => 'директор'],
+        ['name' => 'петров', 'post' => 'прогер']
+    ];
+    return view('about', ['team' => $team]);
 });
+*/
+
+Route::get('about', [PageController::class, 'about']);
+Route::get('team', [PageController::class, 'team']);
+
+Route::resource('articles', ArticleController::class);

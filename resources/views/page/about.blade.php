@@ -1,0 +1,18 @@
+
+@extends('layouts.app')
+
+@section('title', 'О блоге')
+
+<!-- Секция, содержащая HTML блок. Имеет открывающую и закрывающую часть. -->
+@section('content')
+    <h1>О блоге</h1>
+    <p>Эксперименты с Laravel на Хекслете</p>
+    
+    @foreach ($team as $tm)
+        <div>
+            <p>Имя: {{ $tm['name'] }}</p>
+            <p>Должность: {{ $tm['post'] }}</p>
+        </div>
+    @endforeach
+    
+@endsection
