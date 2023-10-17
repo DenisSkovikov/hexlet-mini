@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
@@ -27,6 +28,39 @@ class ArticleController extends Controller
         // Статьи передаются в шаблон
         // compact('articles') => [ 'articles' => $articles ]
         //return view('article.index', compact('articles'));
+        
+        
+
+        // BEGIN (write your solution here)
+        /*
+        $params = [
+            'q' => [
+                'email' => 'lala@ehu.com',
+                'first_name' => 'Mike'
+            ],
+            's' => 'id:desc'
+        ];
+        $query = User::query();
+        if (isset($params['q'])) {
+            foreach ($params['q'] as $k => $item) {
+                $query->orWhere($k, '=', $item);
+            }
+        }
+        if (isset($params['s'])) {
+            $exp = explode(":", $params['s']);
+            $query->orderBy($exp[0], $exp[1]);
+        }
+        print_r($query->toSql());
+        //exit();
+        //return $query->get();
+        */
+        // END
+    
+        
+        
+        
+        
+        
         return view('article.index', ['articles' => $articles, 'q' => $q]);
     }
 

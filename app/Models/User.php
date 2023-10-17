@@ -42,4 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    // Связываем пользователя с постами (у одного пользователя может быть много постов)
+    public function posts()
+    {
+        return $this->hasMany(__NAMESPACE__ . '\Post', 'creator_id');
+    }
+
+
+    // Связываем пользователя с лайками (один пользователь может ставить много лайков)
+    public function likes()
+    {
+        return $this->hasMany(__NAMESPACE__ . '\PostLike', 'creator_id');
+    }
 }
